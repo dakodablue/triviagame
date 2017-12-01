@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 285baabb231d643679ed2d7bc3f8bae4398c00d2
 .col-12 {
   box-sizing: border-box;
   height: 800px;
@@ -58,7 +63,9 @@ body {
   font-size: 5vw;
   padding: 20px;
 }
-.i {
+.center-block img-right {
+   max-width: 250px;
+   width: 100%;
   margin: 0 auto;
   max-width: 480px;
   width: 100%;
