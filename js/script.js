@@ -5,6 +5,7 @@ function initialScreen() {
 	startScreen = "<p class='text-center main-button-container'>";
 	startScreen += "<a class='btn btn-primary btn-lg btn-block start-button' href='#' role='button'>Start Quiz</a></p>";
 	$(".mainArea").html(startScreen);
+	clickStart.play();
 }
 
 initialScreen();
@@ -44,9 +45,9 @@ function generateLossDueToTimeOut() {
 	unansweredTally++;
 	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>";
 	gameHTML += "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswers[questionCounter] + "</p>";
-	gameHTML += "<i class='fa fa-thumbs-o-down-4x' aria-hidden='true'></i>";	
 	gameHTML += imageArray[questionCounter];
 	$(".mainArea").html(gameHTML);
+	$(".mainArea").prepend("<i class='fa fa-thumbs-o-down fa-5x' aria-hidden='true'></i>");
 	clickFail.play();
 	setTimeout(wait, 4000);  //  change to 4000 or other amount
 }
@@ -54,11 +55,11 @@ function generateLossDueToTimeOut() {
 function generateWin() {
 	correctTally++;
 	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>";
-	gameHTML += "<p class='text-center'>Correct! The answer is: " + correctAnswers[questionCounter] + "</p>";
-	gameHTML += "<i class='fa fa-thumbs-o-up-4x' aria-hidden='true'></i>";	
+	gameHTML += "<p class='text-center'>Correct! The answer is: " + correctAnswers[questionCounter] + "</p>";	
 	gameHTML += "<p>" + answerInfo[questionCounter] + "</p>"
 	gameHTML += imageArray[questionCounter];
 	$(".mainArea").html(gameHTML);
+	$(".mainArea").prepend("<i class='fa fa-thumbs-o-up fa-5x' aria-hidden='true'></i>");
 	clickWin.play();
 	setTimeout(wait, 4000);  //  change to 4000 or other amount
 }
@@ -67,10 +68,10 @@ function generateLoss() {
 	incorrectTally++;
 	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>";
 	gameHTML += "<p class='text-center'>Wrong! The correct answer is: "+ correctAnswers[questionCounter] + "</p>";
-	gameHTML += "<p>Sorry: " + answerInfo[questionCounter] + "</p>"
-	gameHTML += "<i class='fa fa-thumbs-o-down 4x' aria-hidden='true'></i>";
+	gameHTML += "<p>Sorry: " + answerInfo[questionCounter]; + "</p>";
 	gameHTML += imageArray[questionCounter];
 	$(".mainArea").html(gameHTML);
+	$(".mainArea").prepend("<i class='fa fa-thumbs-o-down fa-5x' aria-hidden='true'></i>");
 	clickFail.play();
 	setTimeout(wait, 4000); //  change to 4000 or other amount
 }
@@ -107,14 +108,30 @@ function timerWrapper() {
 		}
 		if (counter > 0) {
 			counter--;
+			clickTimer.play();
 		}
 		$(".timer").html(counter);
 	}
 }
 
 function finalScreen() {
-	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + correctTally + "</p>" + "<p>Wrong Answers: " + incorrectTally + "</p>" + "<p>Unanswered: " + unansweredTally + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Quiz!</a></p>";
+	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>";
+	gameHTML += counter + "</span></p><p class='text-center'>All done, here's how you did!";
+	gameHTML += "</p>" + "<p class='summary-correct'>Correct Answers: " + correctTally;
+	gameHTML += "</p>" + "<p>Wrong Answers: " + incorrectTally + "</p>" + "<p>Unanswered: ";
+	gameHTML += unansweredTally + "</p>" + "<p class='text-center reset-button-container'>";
+	gameHTML += "<a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Quiz!</a></p>";
 	$(".mainArea").html(gameHTML);
+	if (correctTally > 6) {
+	$(".mainArea").prepend("<i class='fa fa-thumbs-o-up fa-5x' aria-hidden='true'></i>");
+	clickWinGame.play();
+	} else if (correctTally == 6) {
+	$(".mainArea").prepend("<i class='fa fa-meh-o fa-5x' aria-hidden='true'></i>");	
+	clickLoseGame.play();
+	} else if (correctTally <= 5) {
+	$(".mainArea").prepend("<i class='fa fa-thumbs-o-down fa-5x' aria-hidden='true'></i>");
+	clickLoseGame.play();
+	}
 }
 
 function resetGame() {
@@ -188,3 +205,7 @@ var incorrectTally = 0;
 var unansweredTally = 0;
 var clickFail = new Audio("audio/fail.mp3");
 var clickWin = new Audio("audio/1up.mp3");
+var clickStart = new Audio("audio/start.mp3");
+var clickWinGame = new Audio("audio/win.mp3");
+var clickLoseGame = new Audio("audio/lose.mp3");
+var clickTimer = new Audio("audio/tick.mp3");

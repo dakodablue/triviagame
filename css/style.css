@@ -1,14 +1,19 @@
 .col-12 {
   box-sizing: border-box;
-  height: 800px;
+  height: 900px;
     background-image: radial-gradient(blue, purple);
     opacity: .9;
     border: solid 2px hotpink;
-}
+  position: inherit;
+  display: block;
 
+}
+.container {
+  margin-top: 40px;
+}
 .main-button-container {
   max-width: 610px;
-  margin: 20px auto;
+  margin: 20px auto 0 auto;
 }
 
 .timer-p {
@@ -65,10 +70,19 @@ body {
   max-width: 480px;
   width: 100%;
 }
+.text-center {
+  margin: 55px auto 10px auto;
+}
+.fa {
+    position: absolute;
+  display: block;
+  margin: -20px 0 0 20px;
+}
 .img-fluid {
-  max-width: 500px;
+  max-width: 640px;
   width: 100%;
-  margin: 0 auto;
+  margin: 20px auto;
   position: inherit;
   display: block;
+  border: solid 2px black;
 }
