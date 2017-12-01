@@ -134,6 +134,7 @@ var questionArray = ["Which company released the first home video game console i
 "Which of the following features was famously lacking in the Odyssey?", 
 "How many Odyssey units were sold in the first year of the console's release?", 
 "What 1972 Atari game rushed a host of home console clones?", 
+"Which store sold the first home version of 'Pong' in the United States?",
 "How many cloned versions of Atari's home 'Pong' console flooded the market between 1975 and 1977?", 
 "What company introduced the first central processing unit-based console to the American market in 1976?", 
 "When did Atari release it's classic Video Computer System (VCS) console, which would later be known as the 2600?", 
