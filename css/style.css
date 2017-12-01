@@ -1,0 +1,68 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.col-12 {
+  box-sizing: border-box;
+  height: 600px;
+    background-image: radial-gradient(blue, purple);
+    opacity: .9;
+    border: solid 2px hotpink;
+}
+
+.main-button-container {
+  max-width: 610px;
+  margin: 20px auto;
+}
+
+.timer-p {
+  margin-top: 40px;
+}
+
+.answer:hover {
+  background: violet;
+  opacity: .8;
+}
+
+.answer {
+  padding-top: 7px;
+  height: 45px;
+  color: black;
+  padding-left: 14px;
+  background-color: hotpink;
+  opacity: .9;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.img-wrong {
+  margin-top: 40px;
+}
+
+.first-answer {
+  margin-top: 40px;
+}
+
+.reset-button {
+  margin-top: 40px;
+}
+
+.summary-correct {
+  margin-top: 40px;
+}
+
+body {
+  background-image: url("../img/maxresdefault.jpg");
+  background-position: center;
+  background-size: 100%;
+  font-family: 'Press Start 2P', cursive;
+  color: lightgray;
+}
+.h1 {
+  font-size: 3vw;
+}
+.i {
+  margin: 0 auto;
+}
