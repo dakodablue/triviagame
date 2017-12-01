@@ -8,7 +8,6 @@ function initialScreen() {
 }
 
 initialScreen();
-
 //Create a function, generateHTML(), that is triggered by the start button, and generates the HTML seen on the project video...
 
 $("body").on("click", ".start-button", function(event){
@@ -45,9 +44,10 @@ function generateLossDueToTimeOut() {
 	unansweredTally++;
 	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>";
 	gameHTML += "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswers[questionCounter] + "</p>";
-	gameHTML += "<i class='fa fa-thumbs-o-down-5x' aria-hidden='true'></i>";	
+	gameHTML += "<i class='fa fa-thumbs-o-down-4x' aria-hidden='true'></i>";	
 	gameHTML += imageArray[questionCounter];
 	$(".mainArea").html(gameHTML);
+	clickFail.play();
 	setTimeout(wait, 4000);  //  change to 4000 or other amount
 }
 
@@ -55,9 +55,11 @@ function generateWin() {
 	correctTally++;
 	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>";
 	gameHTML += "<p class='text-center'>Correct! The answer is: " + correctAnswers[questionCounter] + "</p>";
+	gameHTML += "<i class='fa fa-thumbs-o-up-4x' aria-hidden='true'></i>";	
 	gameHTML += "<p>" + answerInfo[questionCounter] + "</p>"
 	gameHTML += imageArray[questionCounter];
 	$(".mainArea").html(gameHTML);
+	clickWin.play();
 	setTimeout(wait, 4000);  //  change to 4000 or other amount
 }
 
@@ -66,9 +68,10 @@ function generateLoss() {
 	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>";
 	gameHTML += "<p class='text-center'>Wrong! The correct answer is: "+ correctAnswers[questionCounter] + "</p>";
 	gameHTML += "<p>Sorry: " + answerInfo[questionCounter] + "</p>"
-	gameHTML += "<i class='fa fa-thumbs-o-down-5x' aria-hidden='true'></i>";
+	gameHTML += "<i class='fa fa-thumbs-o-down 4x' aria-hidden='true'></i>";
 	gameHTML += imageArray[questionCounter];
 	$(".mainArea").html(gameHTML);
+	clickFail.play();
 	setTimeout(wait, 4000); //  change to 4000 or other amount
 }
 
@@ -84,7 +87,7 @@ function generateHTML() {
 }
 
 function wait() {
-	if (questionCounter < 7) {
+	if (questionCounter < 9) {
 	questionCounter++;
 	generateHTML();
 	counter = 30;
@@ -146,16 +149,16 @@ var answerArray = [["GE", "Magnavox", "RCA", "Atari"],
 ["1977", "1979", "1980", "1983"],
 ["Breakout", "Pac-Man", "Pitfall", "Asteroids"],
 ["Tennis", "Pong", "E.T.", "Q*bert"]];
-var imageArray = ["<img class='center-block img-right' src='img/magnavox-odyssey-system.png'>", 
-"<img class='center-block img-right' src='img/sound.gif'>", 
-"<img class='center-block img-right' src='img/cash.gif'>", 
-"<img class='center-block img-right' src='img/pong.gif'>", 
-"<img class='center-block img-right' src='img/sears.jpg'>", 
-"<img class='center-block img-right' src='img/60.gif'>", 
-"<img class='center-block img-right' src='img/fairchild.gif'>", 
-"<img class='center-block img-right' src='img/1977.gif'>", 
-"<img class='center-block img-right' src='img/breakout.gif'>", 
-"<img class='center-block img-right' src='img/et.gif'>"];
+var imageArray = ["<img class='img-fluid' src='img/magnavox-odyssey-system.png'>", 
+"<img class='img-fluid' src='img/sound.gif'>", 
+"<img class='img-fluid' src='img/cash.gif'>", 
+"<img class='img-fluid' src='img/pong.gif'>", 
+"<img class='img-fluid' src='img/sears.jpg'>", 
+"<img class='img-fluid' src='img/60.gif'>", 
+"<img class='img-fluid' src='img/fairchild.gif'>", 
+"<img class='img-fluid' src='img/1977.gif'>", 
+"<img class='img-fluid' src='img/breakout.gif'>", 
+"<img class='img-fluid' src='img/et.gif'>"];
 var correctAnswers = ["B. Magnavox", 
 "B. Sound", 
 "C. 100,000", 
@@ -182,6 +185,5 @@ var theClock;
 var correctTally = 0;
 var incorrectTally = 0;
 var unansweredTally = 0;
-var clickSound = new Audio("audio/bit.mp3");
 var clickFail = new Audio("audio/fail.mp3");
 var clickWin = new Audio("audio/1up.mp3");

@@ -1,12 +1,6 @@
-
-
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
 .col-12 {
   box-sizing: border-box;
-  height: 600px;
+  height: 800px;
     background-image: radial-gradient(blue, purple);
     opacity: .9;
     border: solid 2px hotpink;
@@ -61,8 +55,18 @@ body {
   color: lightgray;
 }
 .h1 {
-  font-size: 3vw;
+  font-size: 5vw;
+  padding: 20px;
 }
 .i {
   margin: 0 auto;
+  max-width: 480px;
+  width: 100%;
+}
+.img-fluid {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  position: inherit;
+  display: block;
 }
